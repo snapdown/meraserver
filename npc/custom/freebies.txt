@@ -1,0 +1,31 @@
+new_1-1,58,118,3	script	Freebies	567,{
+        // Freebies ID
+        setarray .@freebie_item[0],14533,12210,13600;
+        // Quantity
+        setarray .@quantity[0],5,2,1;
+ 
+        set .npcname$,"[^990000Freebies^000000]";
+       
+        mes .npcname$;
+        mes "Hello "+strcharinfo(0)+" would you like some freebies? ";
+        next;
+       
+        if(#freebiez == 1)
+        {
+                mes .npcname$;
+                mes "you've already claim your Freebies.";
+                close;
+        }
+       
+         for ( set .@x,0; .@x < getarraysize(.@freebie_item); set .@x,.@x + 1 )
+    {
+        getitem .@freebie_item[.@x], .@quantity[.@x];
+    }
+        set #freebiez,1;
+        mes .npcname$;
+        mes "You already got the DeceiveRO's freebies good luck on your new character ";
+        close;
+OnInit:
+waitingroom "Freebies Here!",0;
+end;
+}

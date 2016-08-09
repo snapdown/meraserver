@@ -1,0 +1,6 @@
+-	script	kjdsfksjdf	-1,{
+OnNPCKillEvent:
+if ( getmonsterinfo( killedrid, MOB_MVPEXP ) && rand(100) < 100 )		
+getitem 7615, 1; // change this to gympass ... I don't have in my item_db	
+end;
+}

@@ -1,0 +1,10 @@
+-	script	HiddenWelcome	-1,{
+OnPCLoginEvent:
+if ( !#Welcome ) {
+announce "Hey "+strcharinfo(0)+" has just arrived! Welcome and have fun!",bc,0x33FF33;
+dispbottom "Hello my friend, Welcome to the Nexus Ragnarok Online, i hope you make a lot of friends and have fun, once more, welcome!!";
+#Welcome = 1;
+}
+else
+end;
+}

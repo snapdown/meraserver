@@ -1,0 +1,70 @@
+
+-	script	Limited Items	-1,{
+function	LimitItems;
+function	CheckItems;
+
+OnInit:
+// GM Level to Bypass
+set .GMLevel,80;
+// Check Every X Seconds
+set .Seconds,5;
+// Apply on Which Maps and what Zone No.
+setarray .DisableMap$, // "<mapname>","<zone number>",
+				"guild_vs1","0",
+				"guild_vs2","1",
+				"guild_vs3","2",
+				"guild_vs4","3",
+				"guild_vs5","4";
+
+for( set .i,0; .i < getarraysize( .DisableMap$ ); set .i,.i + 2 )
+	setmapflag .DisableMap$[.i],mf_loadevent;
+end;
+
+OnPCLoadMapEvent:
+if( getgmlevel() >= .GMLevel ) end;
+set @Exceed,0;
+for( set .@i,0; .@i < getarraysize( .DisableMap$ ); set .@i,.@i + 2 )
+	if( strcharinfo(3) == .DisableMap$[.@i] )
+		LimitItems( atoi( .DisableMap$[.@i+1] ) );
+end;
+
+function	LimitItems	{
+switch( getarg(0) ){
+	// Case <zone>: CheckItems( <Item>,<Amount>,<Item>,<Amount>,.....,<Item>,<Amount> ); break;
+	Case 0:	CheckItems( 607,1 );	break;
+	Case 1:	CheckItems( 607,5,608,1 );	break;
+	Case 2:	CheckItems( 607,2,608,3,4002,1 );	break;
+	Case 3:	CheckItems( 607,5,608,1,4002,1,5022,1 );	break;
+	Case 4:	CheckItems( 607,1,608,15,5022,2,7227,10 );	break;
+	default:
+		debugmes "[NPC : "+strnpcinfo(0)+"] - Invalid Zone:"+getarg(0);
+		break;
+}
+return;
+}
+
+function	CheckItems	{
+for( set .@i,0; getarg( .@i,0 ); set .@i,.@i + 2 ){
+	set .@Limit,0;
+	for( set .@eq,0; .@eq <= 10; set .@eq,.@eq + 1 )
+		for( set .@slot,0; .@slot <= getequipcardcnt( .@eq ); set .@slot,.@slot + 1 )
+			if( getequipcardid( .@eq,.@slot ) == getarg(.@i) ) 
+				set .@Limit,.@Limit + 1;
+	set .@Limit,.@Limit + countitem( getarg(.@i) );
+	if( .@Limit > getarg(.@i+1) ){
+		set @Exceed,1;
+		mes "[ ^FF0000Limit : ^0000FF"+getarg(.@i+1)+"^000000 ] "+getitemname( getarg(.@i) );
+	}
+}
+if( @Exceed ){
+	mes "Please ensure all the Items above didnt reach the Limit as stated above.";
+	close2;
+	warp "SavePoint",0,0;
+	deltimer strnpcinfo(0)+"::OnPCLoadMapEvent";
+}else{
+	addtimer ( .Seconds * 1000 ),strnpcinfo(0)+"::OnPCLoadMapEvent";
+	end;
+}
+return;
+}
+}

@@ -1,0 +1,11 @@
+-	script	Sample	-1,{
+end;
+OnInit:
+	bindatcmd "storage",strnpcinfo(0)+"::OnAtcommand";
+end;
+OnAtcommand:
+	if(getmapflag(strcharinfo(3),mf_gvg)) end;
+
+	openstorage;
+end;
+}

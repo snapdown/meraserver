@@ -1,0 +1,11 @@
+// Magic Box Obtainable Items Database
+//
+// Structure of Database:
+// GroupID,ItemID,Rate
+
+// MagicBox
+IG_MagicBox,7090,1	// Ripple
+IG_MagicBox,7088,1	// Snow Crystal
+IG_MagicBox,7084,1	// Sputum of Bird
+IG_MagicBox,7086,1	// Emblem of the Sun God
+IG_MagicBox,7078,1	// Wrath of Valkyrie

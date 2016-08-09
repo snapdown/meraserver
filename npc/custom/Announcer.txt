@@ -1,0 +1,37 @@
+////=========================[ CreaTeD 10 august 2009 ]======================////
+////========================[ Created By Andrew RicozTa ]==========================////
+////=======================[ Special Thanks To Aozi & GM Ocean ]=====================////
+////======================[ Auto Announce Script For Your Server ]=================////
+////====================[ Tested On MiracLe Ragnarok - Stable 13887 ]============////
+////=====================[ Version 2.0 ]============////
+////==========================[ Fixed Bug Timer =p ]===============////
+-	script	Inside	-1,{
+
+OnInit:
+while(1) {
+
+
+announce "Administrator : Static Ragnarok Online Official Website www.static-ro.com. ",bc_all,0xFAAC58;
+sleep 100000;
+
+announce "Administrator : Visit www.board.static-ro.com for updates and announcements. ",bc_all,0xFAAC58;
+sleep 200000;
+
+
+announce "Administrator : You can use @whereis and @mobinfo to help you find the desired monsters and loots you wish to hunt.",bc_all,0xFAAC58;
+sleep 300000;
+
+announce "Administrator : You can use @main and @market,@joinbg,@leavebg Available additional command.",bc_all,0xFAAC58;
+sleep 300000;
+
+announce "Administrator : Be sure to read our server details and quest guides by visiting our Forums and Facebook page!!",bc_all,0xFAAC58;
+sleep 300000;
+
+announce "Administrator : The Donation Shop and Quest NPC are located Prontera town. Be sure to check it from time to time.",bc_all,0xFAAC58;
+sleep 300000;
+
+announce "Administrator : We are not entertaining any hack or scam cases for the meantime. Your account is your own priority. Be wise and secure with it.",bc_all,0xFAAC58;
+sleep 300000;
+
+}
+}
